@@ -29,8 +29,11 @@ export class TasksComponent implements OnInit {
     this.taskService.updateTaskReminder(task).subscribe(() => {});
   }
   submitTask(task: Task) {
-    this.taskService.addNewTask(task).subscribe((task) => {
-      this.tasks.push(task);
+    // move this below into callback
+    this.tasks.push(task);
+
+    this.taskService.addNewTask(task).subscribe(() => {
+      // into here and start local server with npm run server to make api calls
     });
   }
 }
